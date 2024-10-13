@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Card,
   CardBody,
   CardFooter,
@@ -15,11 +14,11 @@ import { Link, useParams } from "react-router-dom";
 import { MOVIEDB_IMAGES_URL } from "src/common/constants";
 import { useSelector } from "react-redux";
 import { selectMovieById } from "./moviesSlice";
+import JokesGenerator from "src/features/ai-jokes/JokesGenerator";
 
 function MovieDetails() {
   const { movieId } = useParams();
   const movie = useSelector((state) => selectMovieById(state, movieId));
-
   return (
     <Box minH="100vh">
       <Link to="/">
@@ -47,14 +46,15 @@ function MovieDetails() {
         <Stack>
           <CardBody>
             <Heading size="md">{movie.title}</Heading>
-
             <Text py="2">{movie.overview}</Text>
           </CardBody>
 
           <CardFooter>
-            <Button bg="green.300" color="white">
-              Generate Joke
-            </Button>
+            <JokesGenerator
+              movieId={movie.id}
+              movieTitle={movie.title}
+              movieDescription={movie.overview}
+            />
           </CardFooter>
         </Stack>
       </Card>

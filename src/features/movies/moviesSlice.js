@@ -9,7 +9,6 @@ const initialState = {
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   const data = await fetchPopularMovies();
-
   return data.data;
 });
 
