@@ -10,7 +10,6 @@ const initialState = {
     error: null,
   },
 };
-console.log(import.meta.env.VITE_OPENAI_API_KEY);
 export const fetchJoke = createAsyncThunk(
   "aiJokes/fetchJoke",
   async ({ movieId, movieTitle, movieDescription }) => {
