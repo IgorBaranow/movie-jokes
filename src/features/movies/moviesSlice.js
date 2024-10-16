@@ -32,7 +32,11 @@ const moviesSlice = createSlice({
   },
 });
 
-export const selectAllMovies = (state) => state.movies.movies;
+export const selectAllMovies = (state) => {
+  const movies = [...state.movies.movies]; // copy from the state, as I can not directly sort state, so I copy and then modify my list
+  movies.sort((movieA, movieB) => movieB.vote_average - movieA.vote_average);
+  return movies;
+};
 export const selectMoviesStatus = (state) => state.movies.status;
 export const selectMoviesError = (state) => state.movies.error;
 export const selectMovieById = (state, movieId) =>
