@@ -48,7 +48,10 @@ function MovieDetails() {
           <CardBody>
             <Heading size="md">{movie.title}</Heading>
             <Text py="2" color="gray.600">
-              Rating: <Badge colorScheme="yellow">{movie?.vote_average}</Badge>
+              Rating:{" "}
+              <Badge colorScheme="yellow">
+                {movie?.vote_average.toFixed(1)}
+              </Badge>
             </Text>
             <Text py="2">{movie.overview}</Text>
           </CardBody>
