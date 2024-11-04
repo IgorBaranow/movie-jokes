@@ -14,8 +14,8 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Link, useParams } from "react-router-dom";
-import { MOVIEDB_IMAGES_URL } from "src/common/constants";
 import JokesGenerator from "src/features/ai-jokes/JokesGenerator";
+import { MOVIEDB_IMAGES_URL } from "src/common/constants";
 import { useGetMovieByIdQuery } from "./moviesApi";
 
 function MovieDetails() {
@@ -42,10 +42,7 @@ function MovieDetails() {
           <CardBody>
             <Heading size="md">{data.title}</Heading>
             <Text py="2" color="gray.600">
-              Rating:{" "}
-              <Badge colorScheme="yellow">
-                {data?.vote_average.toFixed(1)}
-              </Badge>
+              Rating: <Badge colorScheme="yellow">{data?.vote_average}</Badge>
             </Text>
             <Text py="2">{data.overview}</Text>
           </CardBody>
@@ -69,7 +66,7 @@ function MovieDetails() {
   } else if (isError) {
     content = (
       <Flex alignItems="center" justifyContent="center">
-        {error?.data?.status_message ?? "Something went wrong"}
+        {error}
       </Flex>
     );
   }
@@ -85,8 +82,8 @@ function MovieDetails() {
           borderColor="gray.300"
           icon={<ArrowBackIcon />}
         />
-        {content}
       </Link>
+      {content}
     </Box>
   );
 }
